@@ -3,6 +3,7 @@ package frame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import panels.*;
 
 public class mainframe extends JFrame {
 
@@ -22,12 +23,15 @@ public class mainframe extends JFrame {
 	}
 
 	public mainframe() {
+		UIManager.put("OptionPane.background", Color.white);
+		UIManager.put("Panel.background", Color.white);
+		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(10,10,1280,720);
 		setVisible(true);
 		setResizable(false);
-		setTitle("AES Records System V1.0");
-		contentPane = new JPanel();
+		setTitle("AES Records Management System V1.1");
+		contentPane = new login();
 		setContentPane(contentPane);
 		addWindowListener(new CloseWindow());
 	}
