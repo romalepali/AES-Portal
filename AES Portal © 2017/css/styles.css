@@ -1,0 +1,247 @@
+body {
+	background-color: grey;
+	margin: 0px;
+}
+
+/*container*/
+#container {
+	position: relative;
+	margin: auto;
+	background-color: white;
+	width: 1330px;
+	height: 675px;
+	box-shadow: 0px 2px 5px black;
+}
+
+#container1 {
+	position: relative;
+	margin: auto;
+	background-color: green;
+	width: 1330px;
+	height: 875px;
+	box-shadow: 0px 2px 5px black;
+}
+
+/*cover*/
+#cover {
+	position: relative;
+	margin: auto;
+	width: 1330px;
+	height: 175px;
+	background-color: green;
+}
+
+.logo	 {
+	position: absolute;
+	top: 15px;
+	left: 585px;
+}
+
+/*header*/
+#header {
+	position: relative;
+	margin: auto;
+	background-color: green;
+	width: 1330px;
+	height: 50px;
+}
+
+
+/*header menu*/
+#header_menu {
+	position: absolute;
+	height: 50px;
+	font-size: 100%;
+	font-family: Tahoma;
+}
+
+.home_button {
+	position: absolute;
+	background-color: green;
+	left: 0px;
+	top: 0px;
+	text-align: center;
+	color: white;
+	padding-top: 15px;
+	height: 35px;
+	width: 150px;
+}
+
+.home_button:hover {
+	transition: all 0.2s ease;
+	z-index: 1;
+	padding-top: 12px;
+	font-size: 125%;
+}
+
+.settings_button {
+	position: absolute;
+	background-color: green;
+	left: 150px;
+	top: 0px;
+	text-align: center;
+	color: white;
+	padding-top: 15px;
+	height: 35px;
+	width: 150px;
+}
+
+.settings_button:hover {
+	transition: all 0.2s ease;
+	z-index: 1;
+	padding-top: 12px;
+	font-size: 125%;
+}
+
+.help_button {
+	position: absolute;
+	background-color: green;
+	left: 300px;
+	top: 0px;
+	text-align: center;
+	color: white;
+	padding-top: 15px;
+	height: 35px;
+	width: 150px;
+}
+
+.help_button:hover {
+	transition: all 0.2s ease;
+	z-index: 1;
+	padding-top: 12px;
+	font-size: 125%;
+}
+
+.about_button {
+	position: absolute;
+	background-color: green;
+	left: 450px;
+	top: 0px;
+	text-align: center;
+	color: white;
+	padding-top: 15px;
+	height: 35px;
+	width: 150px;
+}
+
+.about_button:hover {
+	transition: all 0.2s ease;
+	z-index: 1;
+	padding-top: 12px;
+	font-size: 125%;
+}
+
+
+/*header search*/
+#header_search {
+	position: absolute;
+	height: 50px;
+	width: 268px;
+	top: 0px;
+	left: 1054px;
+	overflow: hidden;
+}
+
+.search_bar {
+	position: absolute;
+	top: 15px;
+	box-shadow: 0px 0px 2px black;
+}
+
+.search_bar:focus {
+	height: 20px;
+	top: 12px;
+}
+
+.search_button {
+	position: absolute;
+	top: 15px;
+	left: 244px;
+	width: 21px;
+	height: 21px;
+	box-shadow: 0px 0px 2px black;
+}
+
+.search_button:hover {
+	top: 13px;
+	left: 242px;
+	width: 24px;
+	height: 24px;
+}
+
+/*Log In*/
+#login {
+	position: relative;
+	margin: auto;
+	top: 50px;
+	height:300px;
+	width: 445px;
+	color: black;
+	font-family: Tahoma;
+	overflow: hidden;
+}
+
+.usertext {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
+
+.user {
+	position: absolute;
+	left: 30px;
+	top: 55px;
+	height: 30px;
+	border-style: solid;
+}
+
+.passtext {
+	position: absolute;
+	top: 125px;
+	left: 30px;
+}
+
+.pass {
+	position: absolute;
+	left: 30px;
+	top: 150px;
+	height: 30px;
+	border-style: solid;
+}
+
+.login_button {
+	position: absolute;
+	top: 225px;
+	left: 170px;
+}
+
+
+/*contents*/
+#contents {
+	position: relative;
+	margin: auto;
+	background-color: white;
+	width: 1330px;
+	height: 450px;
+}
+
+#contents1 {
+	position: relative;
+	margin: auto;
+	background-color: white;
+	width: 1330px;
+	height: 600px;
+}
+
+/*footer*/
+#footer  {
+	position: relative;
+	margin: auto;
+	background-color: green;
+	text-align: center;
+	color: white;
+	font-family: Tahoma;
+	padding-top: 15px;
+	width: 1330px;
+	height: 35px;
+}
