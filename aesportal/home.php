@@ -79,7 +79,7 @@
                 
             </div>
             <div id="footer">
-                BBhotel &copy 2017
+                AES Portal &copy 2017
             </div>
 	   </div>
     </body>
