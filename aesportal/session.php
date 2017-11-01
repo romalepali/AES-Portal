@@ -11,7 +11,7 @@
 
 	$username=$_POST['username'];
 	$password=$_POST['password'];
-	$q="select * from user where username='$username' and password='$password'";
+	$q="select * from users where username='$username' and password='$password'";
 	$res=mysqli_query($l, $q);
 	if(mysqli_num_rows($res)>0)
 	{

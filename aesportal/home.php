@@ -31,15 +31,14 @@
                     <div class="dropdown_contents">
                         <a href="#">PROFILE</a>
                         <a href="#">SETTINGS</a>
+                        <a href="#">MANAGE</a>
                         <a href="logout.php">LOG OUT</a>
                     </div>
                 </div>
                 <div class="dropdown_content">
                     <button class="dropbutton">RECORDS</button>
                     <div class="dropdown_contents">
-                        <a href="#">RECORDS A</a>
-                        <a href="#">RECORDS B</a>
-                        <a href="#">RECORDS C</a>
+                        <a href="records-form-137.php">Form 137</a>
                     </div>
                 </div>
                 <div class="dropdown_content">
