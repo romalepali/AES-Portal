@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.1.28-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: localhost
+-- Host: localhost    Database: aesportal
 -- ------------------------------------------------------
--- Server version	10.1.21-MariaDB
+-- Server version	10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,31 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `form137`
---
-
-DROP TABLE IF EXISTS `form137`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `form137` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `studid` varchar(16) DEFAULT NULL,
-  `record` longblob,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `form137`
---
-
-LOCK TABLES `form137` WRITE;
-/*!40000 ALTER TABLE `form137` DISABLE KEYS */;
-INSERT INTO `form137` VALUES (1,'2014-15351','Form 137 Ni Siya');
-/*!40000 ALTER TABLE `form137` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `level`
 --
 
@@ -48,9 +23,9 @@ DROP TABLE IF EXISTS `level`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `level` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `levelname` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `level_id` int(11) NOT NULL AUTO_INCREMENT,
+  `level_description` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`level_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,27 +40,53 @@ INSERT INTO `level` VALUES (1,'1st Year'),(2,'2nd Year'),(3,'3rd Year'),(4,'4th 
 UNLOCK TABLES;
 
 --
--- Table structure for table `schoolyear`
+-- Table structure for table `records`
 --
 
-DROP TABLE IF EXISTS `schoolyear`;
+DROP TABLE IF EXISTS `records`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `schoolyear` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `year` varchar(9) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+CREATE TABLE `records` (
+  `record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `record_type` set('Form 137') DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `records` blob,
+  `teacher_id` int(11) DEFAULT NULL,
+  `sy_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`record_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schoolyear`
+-- Dumping data for table `records`
 --
 
-LOCK TABLES `schoolyear` WRITE;
-/*!40000 ALTER TABLE `schoolyear` DISABLE KEYS */;
-INSERT INTO `schoolyear` VALUES (1,'2017-2018');
-/*!40000 ALTER TABLE `schoolyear` ENABLE KEYS */;
+LOCK TABLES `records` WRITE;
+/*!40000 ALTER TABLE `records` DISABLE KEYS */;
+/*!40000 ALTER TABLE `records` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `school_year`
+--
+
+DROP TABLE IF EXISTS `school_year`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `school_year` (
+  `sy_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sy_description` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`sy_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `school_year`
+--
+
+LOCK TABLES `school_year` WRITE;
+/*!40000 ALTER TABLE `school_year` DISABLE KEYS */;
+/*!40000 ALTER TABLE `school_year` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -96,10 +97,13 @@ DROP TABLE IF EXISTS `section`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `section` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `secname` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `section_id` int(11) NOT NULL AUTO_INCREMENT,
+  `section_description` varchar(32) DEFAULT NULL,
+  `teacher_id` int(11) DEFAULT NULL,
+  `sy_id` int(11) DEFAULT NULL,
+  `level_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`section_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +112,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,'BSIT-3B');
+INSERT INTO `section` VALUES (1,'Grade 1 - Rose',1,1,1),(2,'Grade 2 - Pearl',2,1,2),(3,'Grade 3 - Diamond',3,1,3),(4,'Grade 4 - Peridot',4,1,4),(5,'Grade 5 - Quartz',5,1,5),(6,'Grade 6 - Topaz',6,1,6);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,18 +124,15 @@ DROP TABLE IF EXISTS `students`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `students` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `studid` varchar(16) DEFAULT NULL,
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `fname` varchar(32) DEFAULT NULL,
   `mname` varchar(32) DEFAULT NULL,
   `lname` varchar(32) DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `gender` set('Female','Male') DEFAULT NULL,
-  `levid` int(2) DEFAULT NULL,
-  `secid` int(2) DEFAULT NULL,
-  `syid` int(2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `section_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,8 +141,33 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (1,'2014-15351','Rolly','Lee','Linao','1998-02-25','Male',3,1,1);
+INSERT INTO `students` VALUES (7,'Rolly','Lee','Linao','1998-02-25','Male',1);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `teachers`
+--
+
+DROP TABLE IF EXISTS `teachers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `teachers` (
+  `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fname` varchar(32) NOT NULL,
+  `mname` varchar(32) NOT NULL,
+  `lname` varchar(32) NOT NULL,
+  PRIMARY KEY (`teacher_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `teachers`
+--
+
+LOCK TABLES `teachers` WRITE;
+/*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -152,16 +178,14 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` set('Super Admin','Admin','User') DEFAULT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_type` set('Super Admin','Admin','User') DEFAULT NULL,
   `username` varchar(10) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `fname` varchar(32) DEFAULT NULL,
   `lname` varchar(32) DEFAULT NULL,
-  `mobile` varchar(32) DEFAULT NULL,
-  `address` varchar(64) DEFAULT NULL,
   `gender` set('Female','Male') DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -171,7 +195,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Super Admin','superadmin','superadmin','Super','Admin','09876543210','Bo. Obrero, Davao City','Male');
+INSERT INTO `users` VALUES (1,'Super Admin','superadmin','superadmin','Super','Admin','Male');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -184,4 +208,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-01 11:01:03
+-- Dump completed on 2017-11-09 15:32:29

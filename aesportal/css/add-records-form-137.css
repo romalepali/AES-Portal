@@ -3,6 +3,13 @@ body {
     background-color: gray;
 }
 
+.body {
+    box-shadow: 0px 2px 10px 2px;
+    position: relative;
+    margin: auto;
+    width: 1300px;
+}
+
 .navbar {
     position: relative;
     margin: auto;
@@ -124,17 +131,87 @@ body {
 #content {
 	position: relative;
 	margin: auto;
-	height: 700px;
 	width: 1300px;
 }
 
-#content {
+#contents {
 	position: relative;
 	margin: auto;
-	height: 660px;
 	width: 1300px;
 	background-color: white;
+    font-family: Arial;
 }
+
+.signup_text {
+    position: relative;
+    margin: auto;
+    width: 300px;
+    padding-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.signup_con {
+    position: relative;
+    margin: auto;
+    width: 700px;
+    padding: 20px;
+}
+
+.fname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.mname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.lname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.gender {
+    position: relative;
+    width: 450px;
+    right: 0px;
+    top: 0px;
+}
+
+.section {
+    position: relative;
+    width: 450px;
+    right: 0px;
+    top: 0px;
+}
+
+.signup_button {
+    position: relative;
+    width: 100%;
+    right: 0px;
+    top: 0px;
+    background-color: maroon;
+    color: white;
+    padding: 15px;
+    border: solid 1px maroon;
+}
+
+.signup_con input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
 
 /*Footer*/
 #footer {

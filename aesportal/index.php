@@ -6,7 +6,7 @@
         session_start(); 
     if(isset($_SESSION['username']))
     { // if already login   
-        header("location: home.php"); // send to home page   
+        header("location: aes-admin/"); // send to home page   
         exit;
     } 
 ?>
@@ -35,6 +35,15 @@
                 alert("Please Enter Password");
                 document.loginsell.password.focus;
                 return false;
+            }
+        }
+    </script>
+    
+    <script>
+        var login_popup = document.getElementById('login_pop');
+        window.onclick = function(event) {
+            if (event.target == login_popup) {
+                login_popup.style.display = "none";
             }
         }
     </script>
@@ -202,81 +211,83 @@
     </style>
     
     <body>
-        <div class="cover">
-            <a href="index.php">
-                <img class="logo" src="images/logo.png" width="100px;">
-            </a>
-        </div>
-        <div class="navbar">
-            <div class="menu">
-                 <div class="dropdown_content">
-                    <button class="dropbutton" >MY ACCOUNT</button>
-                    <div class="dropdown_contents">
-                        <a href="#" onclick="document.getElementById('login_pop').style.display='block'" style="width:auto;">LOG IN</a>
+        <div class="body">
+            <div class="cover">
+                <a href="index.php">
+                    <img class="logo" src="images/logo.png" width="100px;">
+                </a>
+            </div>
+            <div class="navbar">
+                <div class="menu">
+                     <div class="dropdown_content">
+                        <button class="dropbutton" >MY ACCOUNT</button>
+                        <div class="dropdown_contents">
+                            <a href="#" onclick="document.getElementById('login_pop').style.display='block'" style="width:auto;">LOG IN</a>
+                        </div>
+                    </div>
+                    <div class="dropdown_content">
+                        <button class="dropbutton">HELP</button>
+                        <div class="dropdown_contents">
+                            <a href="#">HOW TO USE</a>
+                        </div>
+                    </div>
+                    <div class="dropdown_content">
+                        <button class="dropbutton">ABOUT</button>
+                        <div class="dropdown_contents">
+                            <a href="#">WEBSITE</a>
+                            <a href="#">DEVELOPMENT</a>
+                            <a href="#">CONTACT US</a>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+
+            <div id="login_pop" class="login_popup">
+                <form class="login_popup_content animate" action="session.php" method="post">
+                    <div class="login_container">
+                        <span class="login_text">AES Portal | Log In</span>
+                        <span class="User">
+                            <input type="text" placeholder="Enter Username" name="username" required>
+                        </span>
+                        <span class="Pass">
+                            <input type="password" placeholder="Enter Password" name="password" required>
+                        </span>
+                        <span class="password"><a href="#">forgot your password?</a></span>
+
+                        <button class="login_button" type="submit" name="submit" onClick="return fun_val();">Login</button>
+                        <span class="noaccount">
+                            Don't have an account yet?
+                            <a href="#"> Ask How</a>
+                        </span>
+                    </div>
+
+                    <div class="login_container2" style="background-color:#f1f1f1">
+                        <button type="button" onclick="document.getElementById('login_pop').style.display='none'" class="cancel_button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="contents">
+                <div id="content">
+                    <div class="welcome_img">
+
+                    </div>
+                    <div class="welcome_msg">
+                        <div class="welcome_title">
+                            WELCOME TO AES PORTAL
+                        </div>
+                        <div class="welcome_intro">
+                            <b>Acacia Elementary School (AES) Portal</b> is a <b>Record Management System</b> for the School specified. It stores and organizes the records of the students of the Acacia Elementary School. For now this system is intended to store and organize <b>Form 137 Records</b> of students every school year. It also store some information about the students personal information and also the teachers personal infomation.<br><br>
+                            <b>Warning: </b>Students or Teachers are not allowed to log in AES Portal for now because this is intended for the Person who is assigned to handle and manage records of the students of the school specified.<br><br>
+                            <b>Note: </b>Please don't forget your account and your password in AES Portal to prevent log in issues.<br><br>
+                            <b>Don't have an account yet? </b>Please contact the Administrator of AES Portal assistance.
+                        </div>
                     </div>
                 </div>
-                <div class="dropdown_content">
-                    <button class="dropbutton">HELP</button>
-                    <div class="dropdown_contents">
-                        <a href="#">HOW TO USE</a>
-                    </div>
+                <div id="footer">
+                    AES Portal &copy 2017
                 </div>
-                <div class="dropdown_content">
-                    <button class="dropbutton">ABOUT</button>
-                    <div class="dropdown_contents">
-                        <a href="#">WEBSITE</a>
-                        <a href="#">DEVELOPMENT</a>
-                        <a href="#">CONTACT US</a>
-                    </div>
-                </div>                
-            </div>
+           </div>
         </div>
-        
-        <div id="login_pop" class="login_popup">
-            <form class="login_popup_content animate" action="session.php" method="post">
-                <div class="login_container">
-                    <span class="login_text">AES Portal | Log In</span>
-                    <span class="User">
-                        <input type="text" placeholder="Enter Username" name="username" required>
-                    </span>
-                    <span class="Pass">
-                        <input type="password" placeholder="Enter Password" name="password" required>
-                    </span>
-                    <span class="password"><a href="#">forgot your password?</a></span>
-                    
-                    <button class="login_button" type="submit" name="submit" onClick="return fun_val();">Login</button>
-                    
-                    <span class="noaccount">
-						Don't have an account yet?
-						<a href="#"> Ask How</a>
-					</span>
-                    
-                </div>
-
-                <div class="login_container2" style="background-color:#f1f1f1">
-                    <button type="button" onclick="document.getElementById('login_pop').style.display='none'" class="cancel_button">Cancel</button>
-                    
-                </div>
-            </form>
-        </div>
-
-        <script>
-            var login_popup = document.getElementById('login_pop');
-
-            window.onclick = function(event) {
-                if (event.target == login_popup) {
-                    login_popup.style.display = "none";
-                }
-            }
-        </script>
-        
-        <div id="content">
-            <div id="content">
-
-            </div>
-            <div id="footer">
-                AES Portal &copy 2017
-            </div>
-	   </div>
     </body>
 </html>

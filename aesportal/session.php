@@ -3,7 +3,7 @@
         session_start(); 
     if(!isset($_POST['submit']))
     { // if the form not yet submitted    
-        header("Location: index.php");    
+        header("Location: /");    
         exit;  
     } 
 
@@ -16,7 +16,7 @@
 	if(mysqli_num_rows($res)>0)
 	{
 	  $_SESSION['username']=$username;
-		echo "<script>window.location='home.php';</script>";
+		echo "<script>window.location='aes-admin/';</script>";
 	}
 	else
 	{
