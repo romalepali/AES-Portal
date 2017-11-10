@@ -1,0 +1,238 @@
+body {
+    margin: auto;
+    background-color: gray;
+}
+
+.body {
+    box-shadow: 0px 2px 10px 2px;
+    position: relative;
+    margin: auto;
+    width: 1300px;
+}
+
+.navbar {
+    position: relative;
+    margin: auto;
+    height: 40px;
+    width: 1300px;;
+    top: 0px;
+    background-color: firebrick;
+    font-family: Arial;
+    z-index: 1;
+}
+
+.menu   {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.navbar a {
+    float: left;
+    font-size: 11px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+.cover {
+    position: relative;
+    width: 1300px;;
+    height: 100px;
+    margin: auto;
+    left: 0px;
+    top: 0px;
+    background-color: maroon;
+    z-index: 1;
+}
+
+.logo {
+    position: absolute;
+    left: 590px;
+}
+
+.dropdown_content {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown_content .dropbutton {
+    font-size: 11px;    
+    border: none;
+    outline: none;
+    color: white;
+    width: 150px;
+    height: 40px;
+    background-color: firebrick;
+}
+
+.dropdown_content:hover .dropbutton {
+    background-color: brown;
+}
+
+.dropdown_contents {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 1px 1px 0px gray;
+    width: 150px;
+    
+    z-index: 1;
+}
+
+.dropdown_contents a {
+    float: none;
+    color: black;
+    padding: 14px 0px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown_contents a:hover {
+    background-color: #ddd;
+}
+
+.dropdown_content:hover .dropdown_contents {
+    display: block;
+}
+
+/*Search*/
+.search {
+    position: absolute;
+    right: 6px;
+    overflow: hidden;
+}
+
+.search_bar {
+	position: relative;
+	top: -1px;
+    right: 0px
+	width: 255px;
+	height: 20px;
+	border: solid 1px maroon;
+	text-indent: 5px;
+	font-style: italic;
+	border-radius: 8px;
+}
+
+.search_button {
+	position: relative;
+	top: 7px;
+	right: 0px;
+	width: 23px;
+	height: 23px;
+    border: solid 1px maroon;
+	border-radius: 6px;
+}
+
+
+/*Content*/
+#content {
+	position: relative;
+	margin: auto;
+	width: 1300px;
+}
+
+#contents {
+	position: relative;
+	margin: auto;
+	width: 1300px;
+	background-color: white;
+    font-family: Arial;
+}
+
+.signup_text {
+    position: relative;
+    margin: auto;
+    width: 300px;
+    padding-top: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.signup_con {
+    position: relative;
+    margin: auto;
+    width: 700px;
+    padding: 20px;
+}
+
+.fname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.mname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.lname {
+    position: relative;
+    width: 450px;
+    left: 0px;
+    top: 0px;
+}
+
+.gender {
+    position: relative;
+    width: 450px;
+    right: 0px;
+    top: 0px;
+}
+
+.section {
+    position: relative;
+    width: 450px;
+    right: 0px;
+    top: 0px;
+}
+
+.update_button {
+    position: relative;
+    width: 100%;
+    top: 0px;
+    background-color: maroon;
+    color: white;
+    padding: 15px;
+    border: solid 1px maroon;
+}
+
+.cancel_button {
+    position: relative;
+    width: 100%;
+    top: 10px;
+    background-color: maroon;
+    color: white;
+    padding: 15px;
+    border: solid 1px maroon;
+}
+
+.signup_con input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+/*Footer*/
+#footer {
+	position: relative;
+	bottom: 0;
+	margin: auto;
+	height: 26px;
+	width: 1300px;
+	background-color: maroon;
+	text-align: center;
+	padding-top: 14px;
+	font-size: 12px;
+	color: white;
+	font-family: Arial;
+}

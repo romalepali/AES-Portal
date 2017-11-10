@@ -37,7 +37,7 @@
         {
             ?>
             <script type="text/javascript">
-            alert('Data Are Updated Successfully');
+            alert('Data are updated successfully!');
             window.location.href='a-z-students.php';
             </script>
             <?php
@@ -46,7 +46,7 @@
         {
             ?>
             <script type="text/javascript">
-            alert('error occured while updating data');
+            alert('Error occured while updating the data!');
             </script>
             <?php
         }
@@ -60,7 +60,7 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="../css/add-records-form-137.css">
+        <link rel="stylesheet" href="../css/modify-students.css">
         <link rel="shortcut icon" href="../images/head_logo.png" />
     </head>
     <title>Modify Student</title>
@@ -77,6 +77,7 @@
                      <div class="dropdown_content">
                         <button class="dropbutton">MY ACCOUNT</button>
                         <div class="dropdown_contents">
+                            <a href="index.php">DASHBOARD</a>
                             <a href="#">PROFILE</a>
                             <a href="#">SETTINGS</a>
                             <a href="#">MANAGE</a>
@@ -86,16 +87,24 @@
                     <div class="dropdown_content">
                         <button class="dropbutton">RECORDS</button>
                         <div class="dropdown_contents">
-                            <a href="#">Form 137</a>
+                            <a href="#">FORM 137</a>
                         </div>
                     </div>
                     <div class="dropdown_content">
                         <button class="dropbutton">STUDENTS</button>
                         <div class="dropdown_contents">
-                            <a href="#">A-Z</a>
+                            <a href="a-z-students.php">A-Z</a>
                             <a href="#">LEVEL</a>
                             <a href="#">SECTION</a>
                             <a href="#">SCHOOL YEAR</a>
+                        </div>
+                    </div>
+                    <div class="dropdown_content">
+                        <button class="dropbutton">TEACHERS</button>
+                        <div class="dropdown_contents">
+                            <a href="#">A-Z</a>
+                            <a href="#">LEVEL</a>
+                            <a href="#">SECTION</a>
                         </div>
                     </div>
                     <div class="dropdown_content">
@@ -124,7 +133,7 @@
             <div id="content">
                 <div id="contents">
                     <form method="post">
-                        <div class="signup_text">Add New Users</div>
+                        <div class="signup_text">Modify Students</div>
                         <div class="signup_con">
                             <span class="fname">
                                 <b>First Name</b>
@@ -139,11 +148,11 @@
                                 <input type="text" placeholder="Enter Last Name" name="lname" value="<?php echo $fetched_row['lname']; ?>" required> <br><br>
                             </span>
                             <span class="birthdate">
-                                <b>Birthdate</b>
+                                <b>Birthdate</b> <br>
                                 <input type="date" placeholder="Enter Birthdate" name="birthdate" value="<?php echo $fetched_row['birthdate']; ?>" required> <br><br>
                             </span>
                             <span class="gender">
-                                <b>Gender:</b> <br>
+                                <b>Gender</b> <br>
                                 <?php
                                     if ($fetched_row['gender'] == 'Female')
                                     {
@@ -158,7 +167,7 @@
                                 ?>
                             </span>
                             <span class="section">
-                                <b>Level & Section:</b> <br>
+                                <b>Level & Section</b> <br>
                                 <?php
                                     if ($fetched_row['section_id'] == 1)
                                     {
@@ -216,7 +225,8 @@
                                     }
                                 ?>
                             </span>
-                            <button class="signup_button" type="submit" name="updatebtn">Update</button>
+                            <button class="update_button" type="submit" name="updatebtn">Update</button>
+                            <button class="cancel_button" type="submit" name="cancelbtn">Cancel</button>
                         </div>
                     </form>
                 </div>

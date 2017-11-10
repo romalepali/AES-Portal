@@ -26,14 +26,14 @@
         <script type="text/javascript">
             function edt_id(id)
             {
-                if(confirm('Sure to edit ?'))
+                if(confirm('Are you sure you want to modify the data?'))
                 {
                     window.location.href='modify-students.php?edit_id='+id;
                 }
             }
             function delete_id(id)
             {
-                if(confirm('Sure to Delete ?'))
+                if(confirm('Are you sure you want to delete the data?'))
                 {
                     window.location.href='a-z-students.php?delete_id='+id;
                 }
@@ -54,6 +54,7 @@
                      <div class="dropdown_content">
                         <button class="dropbutton">MY ACCOUNT</button>
                         <div class="dropdown_contents">
+                            <a href="index.php">DASHBOARD</a>
                             <a href="#">PROFILE</a>
                             <a href="#">SETTINGS</a>
                             <a href="#">MANAGE</a>
@@ -63,13 +64,13 @@
                     <div class="dropdown_content">
                         <button class="dropbutton">RECORDS</button>
                         <div class="dropdown_contents">
-                            <a href="#">Form 137</a>
+                            <a href="#">FORM 137</a>
                         </div>
                     </div>
                     <div class="dropdown_content">
                         <button class="dropbutton">STUDENTS</button>
                         <div class="dropdown_contents">
-                            <a href="#">A-Z</a>
+                            <a href="a-z-students.php">A-Z</a>
                             <a href="#">LEVEL</a>
                             <a href="#">SECTION</a>
                             <a href="#">SCHOOL YEAR</a>
@@ -78,7 +79,7 @@
                     <div class="dropdown_content">
                         <button class="dropbutton">TEACHERS</button>
                         <div class="dropdown_contents">
-                            <a href="#">A-Z</a>
+                            <a href="">A-Z</a>
                             <a href="#">LEVEL</a>
                             <a href="#">SECTION</a>
                         </div>
@@ -117,7 +118,7 @@
                         <th align="center">Birthdate</th>
                         <th align="center">Gender</th>
                         <th align="center">Student ID</th>
-                        <th align="center">Records</th>
+                        <th align="center">More Info</th>
                         <th colspan="2" align="center">Operations</th>
                     </tr>
                     <?php

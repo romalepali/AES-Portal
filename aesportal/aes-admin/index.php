@@ -30,6 +30,7 @@
                      <div class="dropdown_content">
                         <button class="dropbutton">MY ACCOUNT</button>
                         <div class="dropdown_contents">
+                            <a href="index.php">DASHBOARD</a>
                             <a href="#">PROFILE</a>
                             <a href="#">SETTINGS</a>
                             <a href="#">MANAGE</a>
@@ -39,7 +40,7 @@
                     <div class="dropdown_content">
                         <button class="dropbutton">RECORDS</button>
                         <div class="dropdown_contents">
-                            <a href="#">Form 137</a>
+                            <a href="#">FORM 137</a>
                         </div>
                     </div>
                     <div class="dropdown_content">

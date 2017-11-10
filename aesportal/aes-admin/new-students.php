@@ -30,7 +30,7 @@
         {
             ?>
             <script type="text/javascript">
-            alert('Data Are Inserted Successfully ');
+            alert('Data are inserted successfully!');
             window.location.href='a-z-students.php';
             </script>
             <?php
@@ -39,7 +39,7 @@
         {
             ?>
             <script type="text/javascript">
-            alert('error occured while inserting your data');
+            alert('Error occured while inserting the data!');
             </script>
             <?php
         }
@@ -48,7 +48,7 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="../css/add-records-form-137.css">
+        <link rel="stylesheet" href="../css/new-students.css">
         <link rel="shortcut icon" href="../images/head_logo.png" />
     </head>
     <title>Add New Student</title>
@@ -65,6 +65,7 @@
                      <div class="dropdown_content">
                         <button class="dropbutton">MY ACCOUNT</button>
                         <div class="dropdown_contents">
+                            <a href="index.php">DASHBOARD</a>
                             <a href="#">PROFILE</a>
                             <a href="#">SETTINGS</a>
                             <a href="#">MANAGE</a>
@@ -74,16 +75,24 @@
                     <div class="dropdown_content">
                         <button class="dropbutton">RECORDS</button>
                         <div class="dropdown_contents">
-                            <a href="records-form-137.php">Form 137</a>
+                            <a href="#">FORM 137</a>
                         </div>
                     </div>
                     <div class="dropdown_content">
                         <button class="dropbutton">STUDENTS</button>
                         <div class="dropdown_contents">
-                            <a href="#">A-Z</a>
+                            <a href="a-z-students.php">A-Z</a>
                             <a href="#">LEVEL</a>
                             <a href="#">SECTION</a>
                             <a href="#">SCHOOL YEAR</a>
+                        </div>
+                    </div>
+                    <div class="dropdown_content">
+                        <button class="dropbutton">TEACHERS</button>
+                        <div class="dropdown_contents">
+                            <a href="#">A-Z</a>
+                            <a href="#">LEVEL</a>
+                            <a href="#">SECTION</a>
                         </div>
                     </div>
                     <div class="dropdown_content">
@@ -144,7 +153,10 @@
                                 <input type="radio" name="section_id" value="5" required>Grade 5 - Quartz<br>
                                 <input type="radio" name="section_id" value="6" required>Grade 6 - Topaz<br><br>
                             </span>
-                            <button class="signup_button" type="submit" name="addbtn">Add</button>
+                            <button class="add_button" type="submit" name="addbtn">Add</button>
+                            <a class="cancel_button" href="a-z-students.php">
+                                <div class="cancel_con">Cancel</div>
+                            </a>
                         </div>
                     </form>
                 </div>
