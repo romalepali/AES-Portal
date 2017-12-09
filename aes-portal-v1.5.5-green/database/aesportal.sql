@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
+-- MySQL dump 10.16  Distrib 10.1.28-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: localhost
+-- Host: localhost    Database: aesportal
 -- ------------------------------------------------------
--- Server version	10.1.21-MariaDB
+-- Server version	10.1.28-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `activities` (
   `activities_description` varchar(256) DEFAULT NULL,
   `activities_date` datetime DEFAULT NULL,
   PRIMARY KEY (`activities_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `activities` (
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
-INSERT INTO `activities` VALUES (1,'Riego','Raj','Viserius','Updated the student information','2017-12-09 10:18:41');
+INSERT INTO `activities` VALUES (1,'Riego','Raj','Viserius','Updated the student information','2017-12-09 10:18:41'),(2,'Linao','Rolly','Lee','Updated the student information','2017-12-09 17:53:44'),(3,'Nimo','Kegwa','Jud','Added a new user','2017-12-09 18:35:46'),(4,'Nimo','Kegwa','Jud','Deleted a user','2017-12-09 18:36:19'),(5,'Corpin','Pinky','Bucas','Deleted a user','2017-12-09 18:36:24'),(6,'Taghoy','Audrey','Marie','Deleted a user','2017-12-09 18:36:30'),(7,'Linao','Rolly','Lee','Updated the student information','2017-12-09 19:01:44');
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,12 +75,12 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_insert
-after insert on level
-for each row
-begin
-insert into level_activities (level_description, activities_description, activities_date)
-values (NEW.level_description, 'Inserted a new level', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_insert
+after insert on level
+for each row
+begin
+insert into level_activities (level_description, activities_description, activities_date)
+values (NEW.level_description, 'Inserted a new level', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -96,12 +96,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_update
-after update on level
-for each row
-begin
-insert into level_activities (level_description, activities_description, activities_date)
-values (NEW.level_description, 'Updated the level', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_update
+after update on level
+for each row
+begin
+insert into level_activities (level_description, activities_description, activities_date)
+values (NEW.level_description, 'Updated the level', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -117,12 +117,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_delete
-after delete on level
-for each row
-begin
-insert into level_activities (level_description, activities_description, activities_date)
-values (OLD.level_description, 'Deleted a level', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_level_delete
+after delete on level
+for each row
+begin
+insert into level_activities (level_description, activities_description, activities_date)
+values (OLD.level_description, 'Deleted a level', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -189,9 +189,33 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_record_type_insert` AFTER INSERT ON `record_type` FOR EACH ROW begin
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_record_type_insert` AFTER INSERT ON `record_type` FOR EACH ROW begin
+
+insert into rt_activities (type, activities_description, activities_date)
+
+values (NEW.type, 'Inserted a new record type', NOW());
+
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_record_type_update
+after update on record_type
+for each row
+begin
 insert into rt_activities (type, activities_description, activities_date)
-values (NEW.type, 'Inserted a new record type', NOW());
+values (NEW.type, 'Updated a record type', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -207,33 +231,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_record_type_update
-after update on record_type
-for each row
-begin
-insert into rt_activities (type, activities_description, activities_date)
-values (NEW.type, 'Updated a record type', NOW());
-end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_record_type_delete
-after delete on record_type
-for each row
-begin
-insert into rt_activities (type, activities_description, activities_date)
-values (OLD.type, 'Deleted a record type', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_record_type_delete
+after delete on record_type
+for each row
+begin
+insert into rt_activities (type, activities_description, activities_date)
+values (OLD.type, 'Deleted a record type', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -257,7 +260,7 @@ CREATE TABLE `records` (
   `file_type` varchar(30) DEFAULT NULL,
   `file_size` int(11) NOT NULL,
   PRIMARY KEY (`record_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +269,97 @@ CREATE TABLE `records` (
 
 LOCK TABLES `records` WRITE;
 /*!40000 ALTER TABLE `records` DISABLE KEYS */;
+INSERT INTO `records` VALUES (1,1,19,0,'92236-29222-10147-e-book-storage-app-(1).docx','application/vnd.openxmlformats',14),(2,2,19,2,'63312-4345556-river_flows_in_you.mscz','application/x-musescore',31);
 /*!40000 ALTER TABLE `records` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_records_insert
+after insert on records
+for each row
+begin
+insert into records_activities(record_type_id, activities_description,activities_date) 
+values (NEW.record_type_id, 'Added a new record', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_records_update
+after update on records
+for each row
+begin
+insert into records_activities(record_type_id, activities_description,activities_date) 
+values (NEW.record_type_id, 'Updated a record', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_records_delete
+after delete on records
+for each row
+begin
+insert into records_activities(record_type_id, activities_description,activities_date) 
+values (OLD.record_type_id, 'Deleted a record', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `records_activities`
+--
+
+DROP TABLE IF EXISTS `records_activities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `records_activities` (
+  `activities_id` int(11) NOT NULL AUTO_INCREMENT,
+  `record_type_id` int(11) NOT NULL,
+  `activities_description` varchar(50) NOT NULL,
+  `activities_date` datetime NOT NULL,
+  PRIMARY KEY (`activities_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `records_activities`
+--
+
+LOCK TABLES `records_activities` WRITE;
+/*!40000 ALTER TABLE `records_activities` DISABLE KEYS */;
+INSERT INTO `records_activities` VALUES (1,1,'Added a new record','2017-12-09 17:48:07'),(2,2,'Added a new record','2017-12-09 17:52:12');
+/*!40000 ALTER TABLE `records_activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -325,12 +418,12 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_insert
-after insert on school_year
-for each row
-begin
-insert into sy_activities (sy_description, activities_description, activities_date)
-values (NEW.sy_description, 'Added a school_year', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_insert
+after insert on school_year
+for each row
+begin
+insert into sy_activities (sy_description, activities_description, activities_date)
+values (NEW.sy_description, 'Added a school_year', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -346,12 +439,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_update
-after update on school_year
-for each row
-begin
-insert into sy_activities (sy_description, activities_description, activities_date)
-values (NEW.sy_description, 'Updated a school_year', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_update
+after update on school_year
+for each row
+begin
+insert into sy_activities (sy_description, activities_description, activities_date)
+values (NEW.sy_description, 'Updated a school_year', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -367,12 +460,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_delete
-after delete on school_year
-for each row
-begin
-insert into sy_activities (sy_description, activities_description, activities_date)
-values (OLD.sy_description, 'Deleted a school_year', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger school_year_delete
+after delete on school_year
+for each row
+begin
+insert into sy_activities (sy_description, activities_description, activities_date)
+values (OLD.sy_description, 'Deleted a school_year', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -415,12 +508,33 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_section_insert
-after insert on section
-for each row
-begin
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_section_insert
+after insert on section
+for each row
+begin
+insert into section_activities (section_description, activities_description, activities_date)
+values (NEW.section_description, 'Added a new section', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_section_update` AFTER UPDATE ON `section` FOR EACH ROW begin
+
 insert into section_activities (section_description, activities_description, activities_date)
-values (NEW.section_description, 'Added a new section', NOW());
+
+values (NEW.section_description, 'Updated the section information', NOW());
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -436,27 +550,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_section_update` AFTER UPDATE ON `section` FOR EACH ROW begin
-insert into section_activities (section_description, activities_description, activities_date)
-values (NEW.section_description, 'Updated the section information', NOW());
-end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_unicode_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_section_delete` AFTER DELETE ON `section` FOR EACH ROW begin
-insert into section_activities (section_description, activities_description, activities_date)
-values (OLD.section_description, 'Deleted the section', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_section_delete` AFTER DELETE ON `section` FOR EACH ROW begin
+
+insert into section_activities (section_description, activities_description, activities_date)
+
+values (OLD.section_description, 'Deleted the section', NOW());
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -517,7 +616,7 @@ CREATE TABLE `students` (
 
 LOCK TABLES `students` WRITE;
 /*!40000 ALTER TABLE `students` DISABLE KEYS */;
-INSERT INTO `students` VALUES (19,'Dannah','Rose','Sanda','2007-02-21','Female',2,'profile.jpg',1234567890),(20,'Raj','Viserius','Riego','2006-10-10','Male',6,'profile.jpg',1234567891),(21,'Rolly','Lee','Linao','1998-02-25','Male',1,'profile.jpg',1234567892),(22,'Pinky','Bucas','Corpin','2018-02-27','Female',2,'profile.jpg',1234567893),(23,'Andrea','Gail','Balcom','2000-02-12','Female',2,'profile.jpg',1234567894);
+INSERT INTO `students` VALUES (19,'Dannah','Rose','Sanda','2007-02-21','Female',2,'profile.jpg',1234567890),(20,'Raj','Viserius','Riego','2006-10-10','Male',6,'profile.jpg',1234567891),(21,'Rolly','Lee','Linao','1998-02-25','Male',1,'98810-rolly.jpg',1234567892),(22,'Pinky','Bucas','Corpin','2018-02-27','Female',2,'profile.jpg',1234567893),(23,'Andrea','Gail','Balcom','2000-02-12','Female',2,'profile.jpg',1234567894);
 /*!40000 ALTER TABLE `students` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -529,12 +628,12 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_students_insert
-after insert on students
-for each row
-begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Inserted a new student', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_students_insert
+after insert on students
+for each row
+begin
+insert into activities (lname, fname, mname, activities_description, activities_date)
+values (NEW.lname, NEW.fname, NEW.mname, 'Inserted a new student', NOW());
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -550,9 +649,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_students_update` AFTER UPDATE ON `students` FOR EACH ROW begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Updated the student information', NOW());
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_students_update` AFTER UPDATE ON `students` FOR EACH ROW begin
+
+insert into activities (lname, fname, mname, activities_description, activities_date)
+
+values (NEW.lname, NEW.fname, NEW.mname, 'Updated the student information', NOW());
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -568,12 +670,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_students_delete
-after delete on students
-for each row
-begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a student', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_students_delete
+after delete on students
+for each row
+begin
+insert into activities (lname, fname, mname, activities_description, activities_date)
+values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a student', NOW()); 
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -643,12 +745,12 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_teachers_insert
-after insert on teachers
-for each row
-begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Added a new teacher', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_teachers_insert
+after insert on teachers
+for each row
+begin
+insert into activities (lname, fname, mname, activities_description, activities_date)
+values (NEW.lname, NEW.fname, NEW.mname, 'Added a new teacher', NOW()); 
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -664,9 +766,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_teachers_update` AFTER UPDATE ON `teachers` FOR EACH ROW begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Updated the teacher information', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_teachers_update` AFTER UPDATE ON `teachers` FOR EACH ROW begin
+
+insert into activities (lname, fname, mname, activities_description, activities_date)
+
+values (NEW.lname, NEW.fname, NEW.mname, 'Updated the teacher information', NOW()); 
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -682,12 +787,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_teachers_delete
-after delete on teachers
-for each row
-begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a teacher', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_teachers_delete
+after delete on teachers
+for each row
+begin
+insert into activities (lname, fname, mname, activities_description, activities_date)
+values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a teacher', NOW()); 
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -719,6 +824,94 @@ LOCK TABLES `updates` WRITE;
 INSERT INTO `updates` VALUES (1,'Updated the UI and the Contents.','2017-11-26 18:00:00'),(2,'Added some animation on some pages.','2017-11-26 18:06:00'),(3,'Added new navigation menus.','2017-11-27 10:27:00'),(4,'Updated the color of the webpage','2017-12-07 18:47:46');
 /*!40000 ALTER TABLE `updates` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_updates_insert
+after insert on updates
+for each row
+begin
+insert into updates_activities(update_description, activities_description,activities_date) 
+values (NEW.update_description, 'Added a new update', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_updates_update
+after update on updates
+for each row
+begin
+insert into updates_activities(update_description, activities_description,activities_date) 
+values (NEW.update_description, 'Updated an update', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = cp850 */ ;
+/*!50003 SET character_set_results = cp850 */ ;
+/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger after_updates_delete
+after delete on updates
+for each row
+begin
+insert into updates_activities(update_description, activities_description,activities_date) 
+values (OLD.update_description, 'Deleted an update', NOW());
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `updates_activities`
+--
+
+DROP TABLE IF EXISTS `updates_activities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `updates_activities` (
+  `activities_id` int(11) NOT NULL AUTO_INCREMENT,
+  `update_description` varchar(50) NOT NULL,
+  `activities_description` varchar(50) NOT NULL,
+  `activities_date` datetime NOT NULL,
+  PRIMARY KEY (`activities_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `updates_activities`
+--
+
+LOCK TABLES `updates_activities` WRITE;
+/*!40000 ALTER TABLE `updates_activities` DISABLE KEYS */;
+/*!40000 ALTER TABLE `updates_activities` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -740,7 +933,7 @@ CREATE TABLE `users` (
   `prof_pic` varchar(64) DEFAULT NULL,
   `status` set('Active','Inactive') DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -749,7 +942,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','rolly','rolly','Rolly','Lee','Linao','Male','1998-02-25','profile.jpg','Active'),(2,'Admin','dannah','dannah','Dannah','Rose','Sanda','Female','2017-12-01','profile.jpg','Inactive'),(6,'Super Admin','admin','admin','Admin','Admin','Admin','Male','1998-02-25','rolly.jpg','Active'),(7,'Admin','pinky','pinky','Pinky','Bucas','Corpin','Male','1997-02-25','profile.jpg','Inactive'),(8,'Admin','audrey','audrey','Audrey','Marie','Taghoy','Female','1997-03-03','profile.jpg','Inactive');
+INSERT INTO `users` VALUES (1,'Admin','rolly','rolly','Rolly','Lee','Linao','Male','1998-02-25','profile.jpg','Active'),(2,'Admin','dannah','dannah','Dannah','Rose','Sanda','Female','2017-12-01','profile.jpg','Inactive'),(6,'Super Admin','admin','admin','Admin','Admin','Admin','Male','1998-02-25','rolly.jpg','Active');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -761,9 +954,12 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_insert` AFTER INSERT ON `users` FOR EACH ROW begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Added a new user', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_insert` AFTER INSERT ON `users` FOR EACH ROW begin
+
+insert into activities (lname, fname, mname, activities_description, activities_date)
+
+values (NEW.lname, NEW.fname, NEW.mname, 'Added a new user', NOW()); 
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -779,9 +975,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_update` AFTER UPDATE ON `users` FOR EACH ROW begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (NEW.lname, NEW.fname, NEW.mname, 'Updated the user information', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_update` AFTER UPDATE ON `users` FOR EACH ROW begin
+
+insert into activities (lname, fname, mname, activities_description, activities_date)
+
+values (NEW.lname, NEW.fname, NEW.mname, 'Updated the user information', NOW()); 
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -797,9 +996,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_delete` AFTER DELETE ON `users` FOR EACH ROW begin
-insert into activities (lname, fname, mname, activities_description, activities_date)
-values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a user', NOW()); 
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `after_users_delete` AFTER DELETE ON `users` FOR EACH ROW begin
+
+insert into activities (lname, fname, mname, activities_description, activities_date)
+
+values (OLD.lname, OLD.fname, OLD.mname, 'Deleted a user', NOW()); 
+
 end */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -816,4 +1018,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-09 11:10:40
+-- Dump completed on 2017-12-09 19:12:32
