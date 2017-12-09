@@ -101,6 +101,8 @@
                                     <select name="user_type" required>
                                         <option value="">Select</option>
                                         <option value="Admin">Admin</option>
+                                        <option value="Teacher" disabled>Teacher</option>
+                                        <option value="Student" disabled>Student</option>
                                     </select><br><br>
                                     <b>Birthdate</b><br>
                                     <input type="date" name="birthdate" required><br><br>
