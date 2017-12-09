@@ -18,7 +18,7 @@
                     {
                         ?>
                             <div style="position:relative; width:90%; margin:auto; margin-bottom:10px;">
-                                <p style="text-align:center;"><?php echo $row[1];?></p>
+                                <p style="text-align:center; font-size:18px"><?php echo $row[1];?></p>
                                 <p style="text-align:center; font-size:10px; position:relative; width:100%; bottom:15px;"><?php echo $row[2];?></p>
                             </div>
                         <?php
@@ -27,7 +27,7 @@
                 else
                 {
                     ?>
-                        No Updates Yet!
+                        No updates yet!
                     <?php
                 }
             ?>

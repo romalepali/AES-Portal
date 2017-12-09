@@ -37,7 +37,13 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav3()">&times;</a>
             <a href="#" onclick="openNav3_1()">Students</a>
             <a href="#" onclick="openNav3_2()">Teachers</a>
-            <a href="#" onclick="openNav3_3()">Users</a>
+            <?php
+                if($_SESSION['user_type']=='Super Admin'){
+                    ?>
+                        <a href="#" onclick="openNav3_3()">Users</a>
+                    <?php
+                }
+            ?>
             <a href="#" onclick="openNav3_4()">Records</a>
             <a href="#" onclick="openNav3_5()">Section</a>
             <a href="#" onclick="openNav3_6()">Level</a>
@@ -80,7 +86,7 @@
         </div>
         <div id="mySidenav4" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav4()">&times;</a>
-            <a href="about.php">AES Portal</a>
+            <a href="about.php">About AESP</a>
             <a href="developers.php">Developers</a>
             <a href="contacts.php">Contacts</a>
         </div>

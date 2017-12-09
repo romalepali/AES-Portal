@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="../images/head_logo.png"/>
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
-        <title>Contacts</title>
+        <title>About AESP</title>
     </head>
 
     <body style="font-family:Verdana;" onload="myFunction()">

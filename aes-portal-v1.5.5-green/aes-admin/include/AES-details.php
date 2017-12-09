@@ -16,7 +16,7 @@
             <table align="center">
                 <tr>
                     <th>Version:</th>
-                    <td>V1.4.0 Green</td>
+                    <td>V1.5.5 Green</td>
                 </tr>
                 <tr>
                     <th>Type:</th>

@@ -9,7 +9,7 @@
 	{
 		header("Location: index.php");    
 		exit;  
-	} 
+	}
 
 	$username=$_POST['username'];
 	$password=$_POST['password'];
@@ -23,7 +23,12 @@
 			$_SESSION['status']=$row[10];
 		}
 
-        if(($_SESSION['user_type']=='Admin' || $_SESSION['user_type']=='Super Admin') && $_SESSION['status']=='Active'){
+		if(($_SESSION['user_type']=='Super Admin') && $_SESSION['status']=='Active'){
+			$message="You are logged as a Super Admin";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+            echo "<script>window.location='aes-admin/';</script>";
+        }
+        else if(($_SESSION['user_type']=='Admin') && $_SESSION['status']=='Active'){
 			$message="You are logged as an Admin";
 			echo "<script type='text/javascript'>alert('$message');</script>";
             echo "<script>window.location='aes-admin/';</script>";

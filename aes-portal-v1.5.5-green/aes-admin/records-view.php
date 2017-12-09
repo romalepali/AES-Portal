@@ -2,11 +2,16 @@
 <?php
     include ('include/verify-admin.php');
 
-    if(isset($_GET['delete_id']))
+    if(!isset($_GET['record_type_id'])){
+        header("location: index.php");
+        exit;
+    }
+
+    if(isset($_GET['record_type_id']))
     {
-        $sql_query="DELETE FROM updates WHERE update_id=".$_GET['delete_id'];
-        mysqli_query($con,$sql_query);
-        header("Location: updates.php");
+        $_SESSION['type']=$_GET['record_type_id'];
+        $sql_query="SELECT a.*,b.*,c.*,count(b.record_type_id) FROM students a INNER JOIN records b ON a.student_id=b.student_id INNER JOIN record_type c ON b.record_type_id=c.id WHERE b.record_type_id=".$_GET['record_type_id']." GROUP BY a.lname,a.fname,a.mname";
+        $result_set=mysqli_query($con,$sql_query);
     }
 ?>
 <html>
@@ -19,8 +24,8 @@
         <link rel="shortcut icon" href="../images/head_logo.png"/>
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
-        <script src="../js/updates-option.js"></script>
-        <title>Teachers</title>
+        <script src="../js/view-student.js"></script>
+        <title>Records</title>
     </head>
 
     <body style="font-family:Verdana;" onload="myFunction()">
@@ -32,37 +37,34 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>
                         <div class="main">
-                            <h1 style="text-align:center;">Browse Updates</h1>
-
-                            <div id="bydate" style="margin: 20px auto; width:100%; padding:5px;">
+                            <h1 style="text-align:center;">Browse Records</h1>
+                            <div id="sortby" style="margin: 20px auto; width:100%; padding:5px;">
                                 <div style="width:98%; overflow:hide;">
                                     <table align="center">
                                         <tr>
-                                            <th  width="300px">Date</th>
-                                            <th>Description</th>
-                                            <th width="75px">Option</th>
+                                            <th>Name</th>
+                                            <th width="175px">Record Type</th>
                                         </tr>
                                     </table>
                                 </div>
                                 <div style="overflow:scroll; height:310px;">
                                     <table align="center">
                                         <?php
-                                            $sql_query="SELECT * FROM updates GROUP BY update_date DESC";
-                                            $result_set=mysqli_query($con,$sql_query);
                                             if(mysqli_num_rows($result_set)>0)
                                             {
                                                 while($row=mysqli_fetch_row($result_set))
                                                 {
                                                 ?>
                                                 <tr>
-                                                    <td width="300px">
-                                                        <?php echo $row[2];?>
-                                                    </td>
                                                     <td>
-                                                        <?php echo $row[1];?>
+                                                        <a href="javascript: view_profile('<?php echo $row[0];?>')">
+                                                            <?php echo $row[3].", ".$row[1]." ".$row[2]; ?>
+                                                        </a>
                                                     </td>
-                                                    <td width="75px">
-                                                        <a href="javascript: delete_id('<?php echo $row[0]; ?>')">delete</a>
+                                                    <td width="175px">
+                                                        <a href="javascript: viewall_id('<?php echo $row[0]; $_SESSION['section_id']=$row[6];?>')">
+                                                            <?php echo "<b>".$row[17]."</b> [".$row[19]."]"; ?>
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -72,14 +74,13 @@
                                             {
                                                 ?>
                                                 <tr height="50px">
-                                                    <td colspan="4">No data found!</td>
+                                                    <td colspan="5">No records found!</td>
                                                 </tr>
                                                 <?php
                                             }
                                         ?>
                                     </table>
                                 </div>
-                                <button style="margin-top:20px; height:40px; padding:0px 20px; background-color:rgb(0, 100, 0); color:white; border:none" onclick="javascript: add_new()">new</button>
                             </div>
                         </div>
                         <?php include ('include/recent-updates.php');?>

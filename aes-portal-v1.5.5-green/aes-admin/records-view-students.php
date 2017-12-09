@@ -86,7 +86,7 @@
                                             {
                                                 ?>
                                                 <tr height="50px">
-                                                    <td colspan="5">No Records Found!</td>
+                                                    <td colspan="5">No records found!</td>
                                                 </tr>
                                                 <?php
                                             }

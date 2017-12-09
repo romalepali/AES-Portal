@@ -60,7 +60,7 @@
                                     <div class="title">Information</div>
                                     <table align="center">
                                         <tr>
-                                            <th>Student ID</th>
+                                            <th>LRN</th>
                                             <td><?php echo $fetched_row[1]; ?></td>
                                         </tr>
                                         <tr>
@@ -93,9 +93,11 @@
                                                                 <?php echo $fetched_row[12].", ".$fetched_row[10]." ".$fetched_row[11];?>
                                                             </a>
                                                         <?php
+                                                        $_SESSION['section_id']=$fetched_row[14];
                                                     }
                                                     else{
                                                             echo "N/A";
+                                                            $_SESSION['section_id']=$fetched_row[10];
                                                     }
                                                 ?>
                                             </td>
@@ -126,7 +128,7 @@
                                             else
                                             {
                                                 ?>
-                                                    No Records Found!
+                                                    No records found!
                                                 <?php
                                             }
                                         ?>

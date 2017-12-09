@@ -55,7 +55,7 @@
                                         {
                                         ?>
                                             <div class="options">
-                                                <?php echo "No Records Found!";?>
+                                                <?php echo "No records found!";?>
                                             </div>
                                         <?php
                                         }
