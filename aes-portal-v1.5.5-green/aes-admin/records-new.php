@@ -66,10 +66,10 @@
                             <h1 style="text-align:center;">Add New Record</h1>
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                                 <form method="POST">
-                                    <b>Record Name</b>
-                                    <input type="text" name="type" placeholder="enter first name"><br><br>
+                                    <b>Record</b>
+                                    <input type="text" name="type" placeholder="enter record name"><br><br>
                                     <b>Record Description</b>
-                                    <input type="text" name="description" placeholder="enter middle name"><br><br>
+                                    <textarea style="width:100%;height:200px;" name="description" placeholder="enter record description"?></textarea><br><br>
                                     <div style="position:relative; top:40px; width: 150px; margin:auto; margin-bottom:125px;"> 
                                         <button type="submit" name="addbtn" style="border:none; width: 150px; padding: 20px 0px; color:white; background-color:rgb(0, 100, 0);">add</button>
                                     </div>

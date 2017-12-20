@@ -27,7 +27,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Successfully updated the data!');
+                    alert('Successfully updated a section!');
                     function back(id){   
                         window.location.href='section-view.php?view_id='+id;
                     }
@@ -39,7 +39,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Error occured while updating the data!');
+                    alert('Error occured while updating a section!');
                 </script>
             <?php
         }
@@ -57,6 +57,13 @@
         <script src="../js/account.js"></script>
         <title>Update Section</title>
     </head>
+
+    <style>
+        select {
+            height: 30px;
+            width: 100%;
+        }
+    </style>
 
     <body style="font-family:Verdana;" onload="myFunction()">
         <div id="loader"></div>

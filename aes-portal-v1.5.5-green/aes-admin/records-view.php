@@ -10,6 +10,10 @@
     if(isset($_GET['record_type_id']))
     {
         $_SESSION['type']=$_GET['record_type_id'];
+
+        $arecord="SELECT a.* FROM record_type a WHERE a.id=".$_GET['record_type_id'];
+        $result_arecord=mysqli_query($con,$arecord);
+
         $sql_query="SELECT a.*,b.*,c.*,count(b.record_type_id) FROM students a INNER JOIN records b ON a.student_id=b.student_id INNER JOIN record_type c ON b.record_type_id=c.id WHERE b.record_type_id=".$_GET['record_type_id']." GROUP BY a.lname,a.fname,a.mname";
         $result_set=mysqli_query($con,$sql_query);
     }
@@ -21,10 +25,12 @@
         <link rel="stylesheet" href="../css/loader.css">
         <link rel="stylesheet" href="../css/options.css">
         <link rel="stylesheet" href="../css/tables.css">
+        <link rel="stylesheet" href="../css/profile.css">
         <link rel="shortcut icon" href="../images/head_logo.png"/>
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
         <script src="../js/view-student.js"></script>
+        <script src="../js/upload.js"></script>
         <title>Records</title>
     </head>
 
@@ -37,7 +43,18 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>
                         <div class="main">
-                            <h1 style="text-align:center;">Browse Records</h1>
+                            <h1 style="text-align:center;">
+                                <?php
+                                    if(mysqli_num_rows($result_arecord)>0)
+                                    {
+                                        while($rtype=mysqli_fetch_row($result_arecord))
+                                        {
+                                            echo $rtype[1]." Records";
+                                            $_SESSION['atype']=$rtype[1];
+                                        }
+                                    }
+                                ?>
+                            </h1>
                             <div id="sortby" style="margin: 20px auto; width:100%; padding:5px;">
                                 <div style="width:98%; overflow:hide;">
                                     <table align="center">
@@ -64,6 +81,7 @@
                                                     <td width="175px">
                                                         <a href="javascript: viewall_id('<?php echo $row[0]; $_SESSION['section_id']=$row[6];?>')">
                                                             <?php echo "<b>".$row[17]."</b> [".$row[19]."]"; ?>
+                                                            <?php $_SESSION['ctype'] = $row[17]; ?>
                                                         </a>
                                                     </td>
                                                 </tr>
@@ -81,6 +99,7 @@
                                         ?>
                                     </table>
                                 </div>
+                                <button class="studprofbut" style="margin-top:20px;" onclick="javascript: upload_stud(<?php echo $_GET['record_type_id'];?>)">upload</button>
                             </div>
                         </div>
                         <?php include ('include/recent-updates.php');?>

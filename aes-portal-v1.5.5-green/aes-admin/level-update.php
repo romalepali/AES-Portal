@@ -24,7 +24,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Successfully updated the data!');
+                    alert('Successfully updated a level!');
                     window.location.href='level.php';
                 </script>
             <?php
@@ -33,7 +33,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Error occured while updating the data!');
+                    alert('Error occured while updating a level!');
                 </script>
             <?php
         }
@@ -61,7 +61,7 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>    
                         <div class="main">
-                            <h1 style="text-align:center;">Update School Year</h1>
+                            <h1 style="text-align:center;">Update Level</h1>
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                                 <form method="POST" style="border:none; padding: 10px; color:black; background-color:white;">
                                     <b>Level</b>

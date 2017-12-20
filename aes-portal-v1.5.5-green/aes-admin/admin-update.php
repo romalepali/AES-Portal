@@ -57,7 +57,7 @@
         <link rel="shortcut icon" href="../images/head_logo.png"/>
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
-        <title>Update Profile</title>
+        <title>Update Profile Info</title>
     </head>
     <body style="font-family:Verdana;" onload="myFunction()">
         <div id="loader"></div>
@@ -68,7 +68,7 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>
                         <div class="main">
-                            <h1 style="text-align:center;">Update Profile</h1>
+                            <h1 style="text-align:center;">Update Profile Info</h1>
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                             <form method="POST" style="border:none; padding: 10px; color:black; background-color:white;">
                                 <b>First Name</b>

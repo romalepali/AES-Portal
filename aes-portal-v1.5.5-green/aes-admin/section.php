@@ -8,7 +8,7 @@
         if(mysqli_query($con,$sql_query)){
             ?>
                 <script type="text/javascript">
-                    alert('Successfully delete the data!');
+                    alert('Successfully deleted a section!');
                     window.location.href='section.php';
                 </script>
             <?php
@@ -16,7 +16,7 @@
         else{
             ?>
                 <script type="text/javascript">
-                    alert('Error occured while deleting the data!');
+                    alert('Error occured while deleting a section!');
                 </script>
             <?php
         }
@@ -50,8 +50,8 @@
                                 <div style="width:98%; overflow:hide;">
                                     <table align="center">
                                         <tr>
-                                            <th>Section Name</th>
-                                            <th width="200px">Option</th>
+                                            <th>Section</th>
+                                            <th width="200px">School Year</th>
                                             <th width="75px">Option</th>
                                         </tr>
                                     </table>

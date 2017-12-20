@@ -65,7 +65,7 @@
                                     <div class="title">Students</div>
                                     <div class="record">
                                         <?php
-                                            $sql_query="SELECT a.student_id,a.fname,a.mname,a.lname FROM students a INNER JOIN section b ON a.section_id=b.section_id INNER JOIN teachers d ON b.teacher_id=d.teacher_id WHERE b.section_id=".$_GET['view_id']." GROUP BY a.lname,a.fname,a.mname";
+                                            $sql_query="SELECT a.student_id,a.fname,a.mname,a.lname FROM students a INNER JOIN section b ON a.section_id=b.section_id INNER JOIN teachers d ON b.teacher_id=d.teacher_id WHERE b.teacher_id=".$_GET['view_id']." GROUP BY a.lname,a.fname,a.mname";
                                             $result_set=mysqli_query($con,$sql_query);
                                             if(mysqli_num_rows($result_set)>0)
                                             {

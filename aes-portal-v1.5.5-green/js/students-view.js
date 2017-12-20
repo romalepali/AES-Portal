@@ -13,10 +13,6 @@ function viewall_type(id)
 {
     window.location.href='records-view-students.php?viewall_type='+id;
 }
-function upload_id(id)
-{
-    window.location.href='records-upload.php?upload_id='+id;
-}
 function upload_prof(id)
 {
     window.location.href='upload-students.php?upload_prof='+id;

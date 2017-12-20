@@ -5,8 +5,21 @@
     if(isset($_GET['delete_id']))
     {
         $sql_query="DELETE FROM updates WHERE update_id=".$_GET['delete_id'];
-        mysqli_query($con,$sql_query);
-        header("Location: updates.php");
+        if(mysqli_query($con,$sql_query)){
+            ?>
+                <script type="text/javascript">
+                    alert('Successfully deleted an update!');
+                    window.location.href='updates.php';
+                </script>
+            <?php
+        }
+        else{
+            ?>
+                <script type="text/javascript">
+                    alert('Error occured while deleting an update!');
+                </script>
+            <?php
+        }
     }
 ?>
 <html>

@@ -34,33 +34,53 @@
                         <div class="main">
                             <h1 style="text-align:center;">Browse Records</h1>
                             <div id="sortby" style="margin: 20px auto; width:100%; padding:5px;">
-                                <div style="border:solid 1px black; overflow:scroll; height:370px;">
-                                    <?php
-                                        $sql_query="SELECT a.*,count(b.record_type_id) FROM record_type a LEFT JOIN records b ON a.id=b.record_type_id GROUP BY a.type";
-                                        $result_set=mysqli_query($con,$sql_query);
-                                        if(mysqli_num_rows($result_set)>0)
-                                        {
-                                            while($row=mysqli_fetch_row($result_set))
+                                <div style="width:98%; overflow:hide;">
+                                    <table align="center">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th width="175px">Option</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div style="overflow:scroll; height:310px;">
+                                    <table align="center">
+                                        <?php
+                                            $sql_query="SELECT a.*,count(b.record_type_id) FROM record_type a LEFT JOIN records b ON a.id=b.record_type_id GROUP BY a.type";
+                                            $result_set=mysqli_query($con,$sql_query);
+                                            if(mysqli_num_rows($result_set)>0)
+                                            {
+                                                while($row=mysqli_fetch_row($result_set))
+                                                {
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="javascript: view_type_id('<?php echo $row[0]?>')" style="text-decoration:none;">
+                                                                        <?php echo "<b>".$row[1]."</b> [".$row[3]."]";?>
+                                                                </a>
+                                                            </td>
+                                                            <td width="175px">
+                                                                <a href="javascript: update_type_id('<?php echo $row[0]?>')" style="text-decoration:none;">
+                                                                    update
+                                                                </a>
+                                                            </td>
+                                                        </tr>                                                        
+                                                    <?php
+                                                }
+                                            }
+                                            else
                                             {
                                                 ?>
-                                                    <a href="javascript: view_type_id('<?php echo $row[0]?>')" style="text-decoration:none; color:white;">
-                                                        <div class="options">
-                                                            <?php echo "<b>".$row[1]."</b> [".$row[3]."]";?>
-                                                        </div>
-                                                    </a>
+                                                    <tr>
+                                                        <td>
+                                                            <?php echo "No records found!";?>
+                                                        </td>
+                                                    </tr>
                                                 <?php
                                             }
-                                        }
-                                        else
-                                        {
                                         ?>
-                                            <div class="options">
-                                                <?php echo "No records found!";?>
-                                            </div>
-                                        <?php
-                                        }
-                                    ?>
+                                    </table>
                                 </div>
+                                <button style="margin-top:20px; height:40px; padding:0px 20px; background-color:rgb(0, 100, 0); color:white; border:none" onclick="javascript: new_type_id()">new</button>
                             </div>
                         </div>
                         <?php include ('include/recent-updates.php');?>

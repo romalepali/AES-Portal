@@ -8,14 +8,33 @@
 		exit;  
 	}
     
-    $search = $_POST['search'];
+    $search = mysqli_real_escape_string($con,$_POST['search']);
+    $keywords = explode(" ",$search);
     $search_type = $_POST['search_type'];
 
     if($search_type=='students'){
-        $query="SELECT * FROM students WHERE fname LIKE '%" . $search . "%' OR mname LIKE '%" . $search . "%' OR lname LIKE '%" . $search ."%' OR lrn LIKE '%" . $search . "%' GROUP BY lname,fname,mname";
+        $query="SELECT * FROM students WHERE";
+
+        $keyCount = 0;
+        foreach($keywords as $keys){
+            if($keyCount > 0){
+                $query .= " AND";
+            }
+            $query .= " fname LIKE '%$keys%' OR mname LIKE '%$keys%' OR lname LIKE '%$keys%' OR lrn LIKE '%$keys%'";
+            ++$keyCount;
+        }
     }
     else {
-        $query="SELECT * FROM teachers WHERE fname LIKE '%" . $search . "%' OR mname LIKE '%" . $search . "%' OR lname LIKE '%" . $search ."%' OR valid_id LIKE '%" . $search . "%' GROUP BY lname,fname,mname";
+        $query="SELECT * FROM teachers WHERE";
+
+        $keyCount = 0;
+        foreach($keywords as $keys){
+            if($keyCount > 0){
+                $query .= " AND";
+            }
+            $query .= " fname LIKE '%$keys%' OR mname LIKE '%$keys%' OR lname LIKE '%$keys%' OR valid_id LIKE '%$keys%'";
+            ++$keyCount;
+        }
     }
 ?>
 <html>
@@ -62,7 +81,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div style="overflow:scroll; height:310px;">
+                                <div style="overflow-y:scroll; height:310px;">
                                     <table align="center">
                                         <?php
                                             $result_set=mysqli_query($con,$query);
@@ -106,7 +125,7 @@
                                             {
                                                 ?>
                                                 <tr height="50px">
-                                                    <td colspan="4">No result found!</td>
+                                                    <td colspan="4">No results found!</td>
                                                 </tr>
                                                 <?php
                                             }

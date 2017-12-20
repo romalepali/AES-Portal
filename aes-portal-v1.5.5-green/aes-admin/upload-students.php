@@ -32,7 +32,7 @@
             mysqli_query($con,$sql);
             ?>
                 <script>
-                    alert('Successfully uploaded');
+                    alert('Successfully uploaded!');
 
                     function back(id){   
                         window.location.href='students-profile.php?view_id='+id;
@@ -46,7 +46,7 @@
         {
             ?>
                 <script>
-                    alert('Error while uploading file');
+                    alert('Error while uploading file!');
                 </script>
             <?php
         }

@@ -14,6 +14,7 @@
         $fetched_row2=mysqli_num_rows($result_set2);
 
         $_SESSION['student_id']=$_GET['view_id'];
+        $_SESSION['atype']=NULL;
 
         if($fetched_row2>0){
             $sql_query="SELECT a.student_id,a.lrn,a.fname,a.mname,a.lname,a.birthdate,a.gender,b.section_description,c.level_description,a.prof_pic,d.fname,d.mname,d.lname,d.teacher_id,a.section_id FROM students a INNER JOIN section b ON a.section_id=b.section_id INNER JOIN level c ON b.level_id=c.level_id INNER JOIN teachers d ON b.teacher_id=d.teacher_id WHERE a.student_id=".$_GET['view_id'];
@@ -37,6 +38,7 @@
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
         <script src="../js/students-view.js"></script>
+        <script src="../js/upload.js"></script>
         <title>Student Profile</title>
     </head>
 
@@ -57,7 +59,7 @@
                                     </div>
                                 </a>
                                 <div class="studentsinfo">
-                                    <div class="title">Information</div>
+                                    <div class="title">Student Info</div>
                                     <table align="center">
                                         <tr>
                                             <th>LRN</th>
@@ -66,6 +68,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <td><?php echo $fetched_row[4].", ".$fetched_row[2]." ".$fetched_row[3]; ?></td>
+                                            <?php $_SESSION['fullname']=$fetched_row[4].", ".$fetched_row[2]." ".$fetched_row[3];?>
                                         </tr>
                                         <tr>
                                             <th>Birthdate</th>
@@ -89,7 +92,7 @@
                                                 <?php
                                                     if($fetched_row2>0){
                                                         ?>
-                                                            <a style="text-decoration:none; color:rgb(0, 100, 0);" href="javascript: view_id(<?php echo $fetched_row[14];?>)">
+                                                            <a style="text-decoration:none; color:rgb(0, 100, 0);" href="javascript: view_id(<?php echo $fetched_row[13];?>)">
                                                                 <?php echo $fetched_row[12].", ".$fetched_row[10]." ".$fetched_row[11];?>
                                                             </a>
                                                         <?php
@@ -134,7 +137,7 @@
                                         ?>
                                         </table>
                                     </div>
-                                    <button class="studprofbut" onclick="javascript: upload_id('<?php echo $fetched_row[0]; ?>')">upload</button>
+                                    <button class="studprofbut" onclick="javascript: upload_new('<?php echo $fetched_row[0]; ?>')">upload</button>
                                 </div>
                             </div>
                         </div>

@@ -33,8 +33,21 @@
     if(isset($_GET['delete_id']))
     {
         $sql_query="DELETE FROM users WHERE user_id=".$_GET['delete_id'];
-        mysqli_query($con,$sql_query);
-        header("Location: users.php");
+        if(mysqli_query($con,$sql_query)){
+            ?>
+                <script type="text/javascript">
+                    alert('Successfully deleted an user!');
+                    window.location.href='users.php';
+                </script>
+            <?php
+        }
+        else{
+            ?>
+                <script type="text/javascript">
+                    alert('Error occured while deleting an user!');
+                </script>
+            <?php
+        }
     }
 ?>
 <html>

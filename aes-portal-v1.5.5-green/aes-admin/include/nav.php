@@ -45,9 +45,9 @@
                 }
             ?>
             <a href="#" onclick="openNav3_4()">Records</a>
-            <a href="#" onclick="openNav3_5()">Section</a>
-            <a href="#" onclick="openNav3_6()">Level</a>
-            <a href="#" onclick="openNav3_7()">Year</a>
+            <a href="#" onclick="openNav3_5()">Sections</a>
+            <a href="#" onclick="openNav3_6()">Levels</a>
+            <a href="#" onclick="openNav3_7()">School<br>Years</a>
         </div>
         <div id="mySidenav3_1" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav3_1()">&times;</a>

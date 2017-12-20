@@ -25,7 +25,7 @@
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
         <script src="../js/section-view.js"></script>
-        <title>Section Information</title>
+        <title>Section Info</title>
     </head>
 
     <body style="font-family:Verdana;" onload="myFunction()">
@@ -37,7 +37,7 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>                        
                         <div class="main">
-                            <h1 style="text-align:center;">Section Information</h1>
+                            <h1 style="text-align:center;">Section Info</h1>
                             <div style="position relative; width:100%; margin:auto; text-align:left;">
                                 <div class="studentsinfo">
                                     <table align="center">

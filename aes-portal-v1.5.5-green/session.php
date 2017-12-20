@@ -12,7 +12,7 @@
 	}
 
 	$username=$_POST['username'];
-	$password=$_POST['password'];
+	$password=md5($_POST['password']);
 	$query="SELECT * FROM users WHERE BINARY username='$username' AND BINARY password='$password'";
 	$result=mysqli_query($con, $query);
 	if(mysqli_num_rows($result)>0)
@@ -25,10 +25,15 @@
 
 		if(($_SESSION['user_type']=='Super Admin') && $_SESSION['status']=='Active'){
 			$message="You are logged as a Super Admin";
+			$login = "INSERT INTO access (user_id,operation_date,operation) VALUES ('".$_SESSION['user_id']."',NOW(),'Log In')";
+			mysqli_query($con,$login);
 			echo "<script type='text/javascript'>alert('$message');</script>";
             echo "<script>window.location='aes-admin/';</script>";
         }
         else if(($_SESSION['user_type']=='Admin') && $_SESSION['status']=='Active'){
+			$login = "INSERT INTO access (user_id,operation_date,operation) VALUES ('".$_SESSION['user_id']."',NOW(),'Log In')";
+			mysqli_query($con,$login);
+
 			$message="You are logged as an Admin";
 			echo "<script type='text/javascript'>alert('$message');</script>";
             echo "<script>window.location='aes-admin/';</script>";

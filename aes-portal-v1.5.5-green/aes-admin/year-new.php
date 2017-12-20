@@ -4,39 +4,47 @@
 
     if(isset($_POST['addbtn']))
     {
-        $sy_description = $_POST['sy_description'];
-        
-
-        $sql_query2="SELECT * FROM school_year WHERE sy_description='$sy_description'";
-        $result_set2=mysqli_query($con,$sql_query2);
-        $fetched_row2=mysqli_num_rows($result_set2);
-    
-        if($fetched_row2>0){
+        if($_POST['sy_start']>=$_POST['sy_end']){
             ?>
                 <script type="text/javascript">
-                    alert('School Year already exists!');
+                    alert('Invalid School Year!');
                 </script>
             <?php
         }
         else{
-            $sql_query = "INSERT INTO school_year (sy_description) VALUES ('$sy_description')";
-
-            if(mysqli_query($con,$sql_query))
-            {
+            $sy_description = $_POST['sy_start']."-".$_POST['sy_end'];
+            
+            $sql_query2="SELECT * FROM school_year WHERE sy_description='$sy_description'";
+            $result_set2=mysqli_query($con,$sql_query2);
+            $fetched_row2=mysqli_num_rows($result_set2);
+        
+            if($fetched_row2>0){
                 ?>
                     <script type="text/javascript">
-                        alert('Successfully added a new School Year!');
-                        window.location.href='year.php';
+                        alert('School Year already exists!');
                     </script>
                 <?php
             }
-            else
-            {
-                ?>
-                    <script type="text/javascript">
-                        alert('Error occured while adding a new School Year!');
-                    </script>
-                <?php
+            else{
+                $sql_query = "INSERT INTO school_year (sy_description) VALUES ('$sy_description')";
+    
+                if(mysqli_query($con,$sql_query))
+                {
+                    ?>
+                        <script type="text/javascript">
+                            alert('Successfully added a new School Year!');
+                            window.location.href='year.php';
+                        </script>
+                    <?php
+                }
+                else
+                {
+                    ?>
+                        <script type="text/javascript">
+                            alert('Error occured while adding a new School Year!');
+                        </script>
+                    <?php
+                }
             }
         }
     }
@@ -53,6 +61,14 @@
         <title>Add New School Year</title>
     </head>
 
+    <style>
+        input[type=number] {
+            height: 30px;
+            width: 40%;
+            text-align:center;
+        }
+    </style>
+
     <body style="font-family:Verdana;" onload="myFunction()">
         <div id="loader"></div>
             <div style="display:none;" id="myDiv" class="animate-bottom">
@@ -66,7 +82,9 @@
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                                 <form method="POST">
                                     <b>School Year</b>
-                                    <input type="text" name="sy_description" placeholder="enter a new school year"><br>
+                                    <input type="number" name="sy_start" placeholder="start">
+                                    -
+                                    <input type="number" name="sy_end" placeholder="end"><br>
                                     <div style="position:relative; top:40px; width: 150px; margin:auto; margin-bottom:80px;"> 
                                         <button type="submit" name="addbtn" style="border:none; width: 150px; padding: 20px 0px; color:white; background-color:rgb(0, 100, 0);">Add</button>
                                     </div>

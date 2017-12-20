@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/loader.css">
         <link rel="shortcut icon" href="images/head_logo.png"/>
         <script src="js/loader.js"></script>
-        <title>AES Portal</title>
+        <title>AES Archive Management System</title>
     </head>
     <body style="font-family:Verdana;" onload="myFunction()">
         <div id="loader"></div>

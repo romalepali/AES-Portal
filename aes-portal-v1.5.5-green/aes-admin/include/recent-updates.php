@@ -39,7 +39,7 @@
                 else
                 {
                     ?>
-                        No updates yet!
+                        No updates found!
                     <?php
                 }
             ?>

@@ -16,12 +16,12 @@
         if($fetched_row2>0){
             ?>
                 <script type="text/javascript">
-                    alert('Student already exists!');
+                    alert('Section already exists!');
                 </script>
             <?php
         }
         else{
-            $sql_query = "INSERT INTO section (section_description, teacher_id, sy_id, level_id) VALUES ('$section_description','teacher_id','$sy_id','$level_id')";
+            $sql_query = "INSERT INTO section (section_description, teacher_id, sy_id, level_id) VALUES ('$section_description','$teacher_id','$sy_id','$level_id')";
 
             if(mysqli_query($con,$sql_query))
             {
@@ -56,6 +56,13 @@
         <title>Add New Section</title>
     </head>
 
+    <style>
+        select {
+            height: 30px;
+            width: 100%;
+        }
+    </style>
+
     <body style="font-family:Verdana;" onload="myFunction()">
         <div id="loader"></div>
             <div style="display:none;" id="myDiv" class="animate-bottom">
@@ -65,31 +72,24 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>    
                         <div class="main">
-                            <h1 style="text-align:center;">Add New Student</h1>
+                            <h1 style="text-align:center;">Add New Section</h1>
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                                 <form method="POST">
                                     <b>Section</b>
                                     <input type="text" name="section_description" placeholder="enter section name"><br>
                                     
                                     <br><br><b>Adviser</b><br>
-                                    <select name="teacher_id" value="">
+                                    <select name="teacher_id" required>
                                         <option value="">Select</option>
                                         <?php
-                                            $sql_query="SELECT lname, fname, mname FROM teachers";
+                                            $sql_query="SELECT teacher_id, lname, fname, mname FROM teachers";
                                             $result_set=mysqli_query($con,$sql_query);
                                             
                                             if(mysqli_num_rows($result_set)>0)
                                             {
                                                 while($row=mysqli_fetch_row($result_set))
                                                 {
-                                                    if($fetched_row['teacher_id']==$row[0]){
-                                                        echo "<option value='$row[0]' checked required selected>".$row[0].","." ".$row[1].$row[2]."</option>";
-                                                    }
-                                                    else{
-                                                        echo "<option value='$row[0]' required>".$row[0].","." ".$row[1]." ".$row[2]."</option>";
-                                                    }
-                                                ?>
-                                                <?php
+                                                        echo "<option value='$row[0]'>".$row[1].", ".$row[2]." ".$row[3]."</option>";
                                                 }
                                             }
                                             else
@@ -102,24 +102,17 @@
                                     </select>
 
                                     <br><br><b>School Year</b><br>
-                                    <select name="sy_id" value="">
+                                    <select name="sy_id" required>
                                         <option value="">Select</option>
                                         <?php
-                                            $sql_query="SELECT sy_description FROM school_year";
+                                            $sql_query="SELECT sy_id,sy_description FROM school_year GROUP BY sy_description ASC";
                                             $result_set=mysqli_query($con,$sql_query);
                                             
                                             if(mysqli_num_rows($result_set)>0)
                                             {
                                                 while($row=mysqli_fetch_row($result_set))
                                                 {
-                                                    if($fetched_row['sy_id']==$row[0]){
-                                                        echo "<option value='$row[0]' checked required selected>".$row[0]."</option>";
-                                                    }
-                                                    else{
-                                                        echo "<option value='$row[0]' required>".$row[0]."</option>";
-                                                    }
-                                                ?>
-                                                <?php
+                                                    echo "<option value='$row[0]'>".$row[1]."</option>";
                                                 }
                                             }
                                             else
@@ -132,24 +125,17 @@
                                     </select>
 
                                     <br><br><b>Level</b><br>
-                                    <select name="level_id" value="">
+                                    <select name="level_id" required>
                                         <option value="">Select</option>
                                         <?php
-                                            $sql_query="SELECT level_description FROM level";
+                                            $sql_query="SELECT level_id, level_description FROM level";
                                             $result_set=mysqli_query($con,$sql_query);
                                             
                                             if(mysqli_num_rows($result_set)>0)
                                             {
                                                 while($row=mysqli_fetch_row($result_set))
                                                 {
-                                                    if($fetched_row['level_id']==$row[0]){
-                                                        echo "<option value='$row[0]' checked required selected>".$row[0]."</option>";
-                                                    }
-                                                    else{
-                                                        echo "<option value='$row[0]' required>".$row[0]."</option>";
-                                                    }
-                                                ?>
-                                                <?php
+                                                    echo "<option value='$row[0]'>".$row[1]."</option>";
                                                 }
                                             }
                                             else

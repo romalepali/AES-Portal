@@ -9,7 +9,7 @@
         if(mysqli_query($con,$sql_query)&&mysqli_query($con,$sql_query2)){
             ?>
                 <script type="text/javascript">
-                    alert('Successfully delete the data!');
+                    alert('Successfully deleted a student!');
                     window.location.href='students.php';
                 </script>
             <?php
@@ -17,7 +17,7 @@
         else{
             ?>
                 <script type="text/javascript">
-                    alert('Error occured while deleting the data!');
+                    alert('Error occured while deleting a student!');
                 </script>
             <?php
         }

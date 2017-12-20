@@ -4,6 +4,18 @@
 
     if(isset($_GET['viewall_id']))
     {
+        $arecord="SELECT a.* FROM students a WHERE a.student_id=".$_GET['viewall_id'];
+        $result_arecord=mysqli_query($con,$arecord);
+
+        if(mysqli_num_rows($result_arecord)>0)
+        {
+            while($astud=mysqli_fetch_row($result_arecord))
+            {
+                $_SESSION['access'] = $astud[3].", ".$astud[1]." ".$astud[2]." | ".$_SESSION['atype']." Records";
+                $_SESSION['student_id']=$astud[0];
+            }
+        }
+
         $sql_query="SELECT a.*,c.*,d.*,e.* FROM records a INNER JOIN students b ON a.student_id=b.student_id INNER JOIN section c ON a.section_id=c.section_id INNER JOIN school_year d ON c.sy_id=d.sy_id INNER JOIN level e ON c.level_id=e.level_id WHERE b.student_id=".$_GET['viewall_id']."&& a.record_type_id=".$_SESSION['type']." GROUP BY c.section_description, a.file,d.sy_description,e.level_description";
         $result_set=mysqli_query($con,$sql_query);
     }
@@ -11,6 +23,19 @@
     {
         $_SESSION['type']=$_GET['viewall_type'];
         $_GET['viewall_id']=$_SESSION['student_id'];
+
+        $arecord="SELECT a.* FROM record_type a WHERE a.id=".$_GET['viewall_type'];
+        $result_arecord=mysqli_query($con,$arecord);
+
+        if(mysqli_num_rows($result_arecord)>0)
+        {
+            while($astud=mysqli_fetch_row($result_arecord))
+            {
+                $_SESSION['access'] = "<i>".$_SESSION['fullname']."</i> ".$astud[1]." Records";
+                $_SESSION['atype'] = $astud[1];
+            }
+        }
+
         $sql_query="SELECT a.*,c.*,d.*,e.* FROM records a INNER JOIN students b ON a.student_id=b.student_id INNER JOIN section c ON a.section_id=c.section_id INNER JOIN school_year d ON c.sy_id=d.sy_id INNER JOIN level e ON c.level_id=e.level_id WHERE b.student_id=".$_SESSION['student_id']."&& a.record_type_id=".$_SESSION['type']." GROUP BY c.section_description, a.file,d.sy_description,e.level_description";
         $result_set=mysqli_query($con,$sql_query);
     }
@@ -31,6 +56,7 @@
         <script src="../js/loader.js"></script>
         <script src="../js/account.js"></script>
         <script src="../js/upload.js"></script>
+        <script src="../js/records-option.js"></script>
         <title>Records</title>
     </head>
 
@@ -43,15 +69,18 @@
                     <div style="overflow:hidden;">
                         <?php include ('include/header.php');?>
                         <div class="main">
-                            <h1 style="text-align:center;">Browse Records</h1>
+                            <h2 style="text-align:center;">
+                                <?php
+                                    echo $_SESSION['access'];
+                                ?>
+                            </h2>
                             <div id="sortby" style="margin: 20px auto; width:100%; padding:5px;">
                                 <div style="width:98%; overflow:hide;">
                                     <table align="center">
                                         <tr>
                                             <th>Filename</th>
-                                            <th width="150px">Level</th>
-                                            <th width="150px">Section</th>
-                                            <th width="150px">School Year</th>
+                                            <th width="250px">Level - Section<br>School Year</th>
+                                            <th width="150px">Option</th>
                                         </tr>
                                     </table>
                                 </div>
@@ -69,14 +98,13 @@
                                                             <?php echo $row[4];?>
                                                         </a>
                                                     </td>
-                                                    <td width="150px">
-                                                        <?php echo $row[15];?>
+                                                    <td width="250px">
+                                                        <?php echo $row[15]." - ".$row[8]."<br>[".$row[13]."]";?>
                                                     </td>
                                                     <td width="150px">
-                                                        <?php echo $row[8];?>
-                                                    </td>
-                                                    <td width="150px">
-                                                        <?php echo $row[13];?>
+                                                        <a href="javascript: update_id('<?php echo $row[0];?>')">
+                                                            update
+                                                        </a>
                                                     </td>
                                                 </tr>
                                                 <?php

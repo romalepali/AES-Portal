@@ -5,8 +5,21 @@
     if(isset($_GET['delete_id']))
     {
         $sql_query="DELETE FROM teachers WHERE teacher_id=".$_GET['delete_id'];
-        mysqli_query($con,$sql_query);
-        header("Location: teachers.php");
+        if(mysqli_query($con,$sql_query)){
+            ?>
+                <script type="text/javascript">
+                    alert('Successfully deleted a teacher!');
+                    window.location.href='teachers.php';
+                </script>
+            <?php
+        }
+        else{
+            ?>
+                <script type="text/javascript">
+                    alert('Error occured while deleting a teacher!');
+                </script>
+            <?php
+        }
     }
 ?>
 <html>

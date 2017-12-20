@@ -51,8 +51,8 @@
                             <h1 style="text-align:center;">Add New Update</h1>
                             <div style="position relative; width:80%; margin:auto; text-align:left;">
                                 <form method="POST">
-                                    <textarea type="text" name="update_description" style="width:100%;height:325px;"></textarea><br><br>
-                                    <div style="position:relative; top:40px; width: 150px; margin:auto;"> 
+                                    <textarea name="update_description" style="width:100%;height:325px;"></textarea><br><br>
+                                    <div style="position:relative; width: 150px; margin:30px auto;"> 
                                         <button type="submit" name="addbtn" style="border:none; width: 150px; padding: 20px 0px; color:white; background-color:rgb(0, 100, 0);">Add</button>
                                     </div>
                                 </form>

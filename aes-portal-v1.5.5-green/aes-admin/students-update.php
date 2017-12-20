@@ -30,7 +30,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Successfully updated the data!');
+                    alert('Successfully updated a student!');
                     function back(id){   
                         window.location.href='students-profile.php?view_id='+id;
                     }
@@ -43,7 +43,7 @@
         {
             ?>
                 <script type="text/javascript">
-                    alert('Error occured while updating the data!');
+                    alert('Error occured while updating a student!');
                 </script>
             <?php
         }
